@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="primaryPanel" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="primaryPanel" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="primaryPanel">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="unDoBtn" min="-2" pref="130" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="restoreBtn" min="-2" pref="154" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="exitBtn" min="-2" pref="130" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="graphsLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="graphComboBox" min="-2" pref="201" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="optionPanel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                          <Component id="graphPanel" pref="680" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="graphsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="graphComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="optionPanel" max="32767" attributes="0"/>
+                      <Component id="graphPanel" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" pref="22" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="exitBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="restoreBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="unDoBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="graphPanel">
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
+        </Container>
+        <Component class="javax.swing.JLabel" name="graphsLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Gr&#xe1;ficos pad&#xe3;o"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="graphComboBox">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="Item 1"/>
+                <StringItem index="1" value="Item 2"/>
+                <StringItem index="2" value="Item 3"/>
+                <StringItem index="3" value="Item 4"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="unDoBtn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Desfazer"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="restoreBtn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Restaurar padr&#xe3;o"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="exitBtn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Fechar"/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JPanel" name="optionPanel">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="legendaCheckBox" min="-2" pref="85" max="-2" attributes="0"/>
+                          <Component id="tituloCheckBox" min="-2" pref="85" max="-2" attributes="0"/>
+                          <Component id="elementosLabel" min="-2" pref="119" max="-2" attributes="0"/>
+                          <Component id="tituloEixosCheckBox" alignment="0" max="32767" attributes="0"/>
+                          <Component id="rotuloPorcentagemCheckBox" alignment="0" max="32767" attributes="0"/>
+                          <Component id="rotuloValorPorcentagemCheckBox" max="32767" attributes="0"/>
+                          <Component id="corBarrasCheckBox" alignment="0" max="32767" attributes="0"/>
+                          <Component id="corBarrasGrupoCheckBox" alignment="0" max="32767" attributes="0"/>
+                          <Component id="gradeCheckBox" alignment="0" max="32767" attributes="0"/>
+                          <Component id="rotuloValorCheckBox" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="28" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="elementosLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="tituloCheckBox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="legendaCheckBox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="tituloEixosCheckBox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="rotuloPorcentagemCheckBox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="rotuloValorCheckBox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="rotuloValorPorcentagemCheckBox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="corBarrasCheckBox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="corBarrasGrupoCheckBox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="gradeCheckBox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="137" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="elementosLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Elementos gr&#xe1;ficos"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="tituloCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Titulo"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="legendaCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Legenda"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="tituloEixosCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Titulo dos eixos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tituloEixosCheckBoxActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="rotuloPorcentagemCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="R&#xf3;tulo de Dados (%)"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="rotuloValorCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="R&#xf3;tulo de Dados - Valor"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="rotuloValorPorcentagemCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="R&#xf3;tulo de Dados - Valor (%)"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rotuloValorPorcentagemCheckBoxActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="corBarrasCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cor das Barras"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="corBarrasGrupoCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cor das Barras (por grupo)"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="gradeCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Grade"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
