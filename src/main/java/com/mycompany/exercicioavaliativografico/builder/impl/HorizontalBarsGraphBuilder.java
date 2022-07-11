@@ -7,6 +7,7 @@ import org.jfree.chart.axis.AxisLocation;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.chart.renderer.category.StandardBarPainter;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 import java.awt.*;
@@ -29,6 +30,7 @@ public class HorizontalBarsGraphBuilder extends GraphBuilder {
         BarRenderer r =(BarRenderer) chart.showChart().getCategoryPlot().getRenderer();
         r.setSeriesPaint(0, Color.CYAN);
         r.setSeriesPaint(1, Color.CYAN);
+        r.setBarPainter(new StandardBarPainter());
         plot.getDomainAxis().setVisible(true);
         plot.setDomainGridlinesVisible(false);
         plot.setRangeAxisLocation(AxisLocation.BOTTOM_OR_RIGHT);

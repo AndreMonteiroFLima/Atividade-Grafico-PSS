@@ -195,6 +195,22 @@ public class GraphPresenter {
             }
         });
 
+        dataInformationPercentage.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chartModel = new AxisPercentageGraphDecorator(chartModel);
+                updateChart(chartModel);
+            }
+        });
+
+        dataInformationValuePercentage.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chartModel = new AxisValuePercentageGraphDecorator(chartModel);
+                updateChart(chartModel);
+            }
+        });
+
     }
 
     public JPanel buildChart(IGraph chartModel){

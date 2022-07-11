@@ -3,16 +3,19 @@ package com.mycompany.exercicioavaliativografico.model.decorator;
 import com.mycompany.exercicioavaliativografico.model.IGraph;
 import com.mycompany.exercicioavaliativografico.model.decorator.GraphDecorator;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.labels.*;
+import org.jfree.chart.labels.CategoryItemLabelGenerator;
+import org.jfree.chart.labels.ItemLabelAnchor;
+import org.jfree.chart.labels.ItemLabelPosition;
+import org.jfree.chart.labels.StandardCategoryItemLabelGenerator;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.chart.ui.TextAnchor;
 
 import java.text.NumberFormat;
 
-public class AxisValueGraphDecorator extends GraphDecorator {
+public class AxisPercentageGraphDecorator extends GraphDecorator {
 
-    public AxisValueGraphDecorator(IGraph graph) {
+    public AxisPercentageGraphDecorator(IGraph graph) {
         super(graph);
     }
 
@@ -21,10 +24,9 @@ public class AxisValueGraphDecorator extends GraphDecorator {
         CategoryPlot plot=graph.showChart().getCategoryPlot();
         plot.getRangeAxis().setVisible(true);
         BarRenderer r = (BarRenderer) plot.getRenderer();
-
         CategoryItemLabelGenerator generator = r.getDefaultItemLabelGenerator();
         if(generator==null) {
-            generator = new StandardCategoryItemLabelGenerator("{2}", NumberFormat.getInstance());
+            generator = new StandardCategoryItemLabelGenerator("{3}", NumberFormat.getInstance());
             r.setDefaultItemLabelGenerator(generator);
         }
         r.setDefaultItemLabelsVisible(true);
