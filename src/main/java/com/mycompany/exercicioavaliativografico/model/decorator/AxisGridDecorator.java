@@ -16,6 +16,9 @@ public class AxisGridDecorator extends GraphDecorator {
         return super.showChart();
     }
 
-    
-    
+    public IGraph reverseDecorator(){
+        graph.showChart().getCategoryPlot().setDomainGridlinesVisible(false);
+        graph.showChart().getCategoryPlot().setRangeGridlinesVisible(false);
+        return this.graph;
+    }
 }

@@ -34,6 +34,12 @@ public class AxisValuePercentageGraphDecorator extends GraphDecorator {
         return super.showChart();
     }
 
-    
-    
+    @Override
+    public IGraph reverseDecorator() {
+        graph.showChart().getCategoryPlot().getRenderer().setDefaultItemLabelsVisible(false);
+        graph.showChart().getCategoryPlot().getRenderer().setDefaultItemLabelGenerator(null);
+        return graph;
+    }
+
+
 }

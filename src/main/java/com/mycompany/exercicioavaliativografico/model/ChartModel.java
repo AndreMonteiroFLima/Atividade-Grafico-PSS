@@ -19,5 +19,9 @@ public class ChartModel extends IGraph{
         return this.data;
     }
 
+    @Override
+    public IGraph reverseDecorator(){
+        return this;
+    }
 
 }

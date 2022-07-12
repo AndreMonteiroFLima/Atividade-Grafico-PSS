@@ -18,6 +18,11 @@ public class TitleGraphDecorator extends GraphDecorator {
         return super.showChart();
     }
 
-    
-    
+    @Override
+    public IGraph reverseDecorator() {
+        graph.showChart().getTitle().setVisible(false);
+        return graph;
+    }
+
+
 }

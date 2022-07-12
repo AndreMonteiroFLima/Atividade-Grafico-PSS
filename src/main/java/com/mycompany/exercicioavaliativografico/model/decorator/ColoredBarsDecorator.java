@@ -31,6 +31,10 @@ public class ColoredBarsDecorator extends GraphDecorator {
         return super.showChart();
     }
 
-    
-    
+    @Override
+    public IGraph reverseDecorator() {
+        return null;
+    }
+
+
 }

@@ -27,6 +27,12 @@ public class AxisTitleGraphDecorator extends GraphDecorator {
         return super.showChart();
     }
 
-    
-    
+    @Override
+    public IGraph reverseDecorator() {
+        graph.showChart().getCategoryPlot().getDomainAxis().setVisible(false);
+        graph.showChart().getCategoryPlot().getRangeAxis().setVisible(false);
+        return graph;
+    }
+
+
 }

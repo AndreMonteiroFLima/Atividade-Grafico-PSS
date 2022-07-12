@@ -23,7 +23,10 @@ public abstract class GraphDecorator extends IGraph{
         return graph.getData();
     }
 
-    public IGraph reverseDecorator(){
-        return this.graph;
+    @Override
+    public IGraph reverseDecorator() {
+        return null;
     }
+
+
 }

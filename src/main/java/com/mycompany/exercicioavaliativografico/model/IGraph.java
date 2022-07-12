@@ -10,6 +10,7 @@ public abstract class IGraph {
     protected JFreeChart chart;
 
     protected Map<String,Double> data;
+
     public abstract JFreeChart showChart();
 
     public void setChart(JFreeChart chart) {
@@ -35,4 +36,6 @@ public abstract class IGraph {
     public int hashCode() {
         return Objects.hash(chart, data);
     }
+
+    public abstract IGraph reverseDecorator();
 }

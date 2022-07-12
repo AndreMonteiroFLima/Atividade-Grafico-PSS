@@ -34,12 +34,14 @@ public class VerticalBarsGraphBuilder extends GraphBuilder {
 
         chart.setChart(ChartFactory.createBarChart(null,null,null,bars, PlotOrientation.VERTICAL,false,false,false));
         CategoryPlot plot = chart.showChart().getCategoryPlot();
+
         BarRenderer r =(BarRenderer) chart.showChart().getCategoryPlot().getRenderer();
         r.setBarPainter(new StandardBarPainter());
         r.setDefaultItemLabelsVisible(true);
         r.setDefaultPositiveItemLabelPosition(new ItemLabelPosition(ItemLabelAnchor.CENTER,TextAnchor.TOP_CENTER));
         r.setSeriesPaint(0, Color.CYAN);
         r.setSeriesPaint(1, Color.CYAN);
+
         plot.getDomainAxis().setVisible(true);
         plot.setDomainGridlinesVisible(false);
         plot.setRangeAxisLocation(AxisLocation.BOTTOM_OR_RIGHT);

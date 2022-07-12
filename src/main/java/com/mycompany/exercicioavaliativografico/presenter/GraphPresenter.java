@@ -7,20 +7,15 @@ import com.mycompany.exercicioavaliativografico.builder.impl.HorizontalBarsGraph
 import com.mycompany.exercicioavaliativografico.builder.impl.VerticalBarsGraphBuilder;
 import com.mycompany.exercicioavaliativografico.model.ChartModel;
 import com.mycompany.exercicioavaliativografico.model.IGraph;
-import com.mycompany.exercicioavaliativografico.model.SubjectModel;
 import com.mycompany.exercicioavaliativografico.model.decorator.*;
 import com.mycompany.exercicioavaliativografico.service.DataProcessingService;
 import com.mycompany.exercicioavaliativografico.view.GraphView;
-import org.jfree.chart.*;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.chart.ChartPanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Collection;
-import java.util.Map;
 
 public class GraphPresenter {
 
@@ -89,8 +84,10 @@ public class GraphPresenter {
         reverseBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(!chartModel.equals(defaultChartModel)) {
-                    chartModel = lastChartModel;
+                if(chartModel == chartModel.reverseDecorator()){
+                    JOptionPane.showMessageDialog(null,"Não da para voltar");
+                }else {
+                    chartModel = chartModel.reverseDecorator();
                     updateChart(chartModel);
                 }
             }
@@ -120,11 +117,16 @@ public class GraphPresenter {
         titleCheckBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                boolean checked = false;
                 String title = null;
                 if(titleCheckBox.isSelected()) {
                     title = JOptionPane.showInputDialog("Digite o titulo do grafico");
+                    if (title!=null) {
+                        setCheckBoxesFalse(titleCheckBox);
+                        checked=true;
+                    }
                 }
+                titleCheckBox.setSelected(checked);
                 lastChartModel=chartModel;
                 chartModel = new TitleGraphDecorator(chartModel,title);
                 updateChart(chartModel);
@@ -139,6 +141,7 @@ public class GraphPresenter {
                     lastChartModel=chartModel;
                     chartModel = new LegendGraphDecorator(chartModel);
                     updateChart(chartModel);
+                    setCheckBoxesFalse(legend);
                 }
             }
         });
@@ -152,6 +155,7 @@ public class GraphPresenter {
                     lastChartModel=chartModel;
                     chartModel = new AxisValueGraphDecorator(chartModel);
                     updateChart(chartModel);
+                    setCheckBoxesFalse(dataInformationValue);
                 }else{
                     graphView.getGraphPanel().remove(0);
                     graphView.getGraphPanel().add(buildChart(defaultChartModel));
@@ -165,8 +169,9 @@ public class GraphPresenter {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                    chartModel = new AxisTitleGraphDecorator(chartModel);
-                    updateChart(chartModel);
+                chartModel = new AxisTitleGraphDecorator(chartModel);
+                updateChart(chartModel);
+                setCheckBoxesFalse(axisTitles);
 
             }
         });
@@ -176,6 +181,7 @@ public class GraphPresenter {
             public void actionPerformed(ActionEvent e) {
                 chartModel = new ColoredBarsDecorator(chartModel);
                 updateChart(chartModel);
+                setCheckBoxesFalse(barColors);
             }
         });
 
@@ -184,6 +190,8 @@ public class GraphPresenter {
             public void actionPerformed(ActionEvent e) {
                 chartModel = new ColoredBarsByGroupDecorator(chartModel);
                 updateChart(chartModel);
+                titleCheckBox.setEnabled(false);
+                setCheckBoxesFalse(barColorsByGroups);
             }
         });
 
@@ -192,6 +200,7 @@ public class GraphPresenter {
             public void actionPerformed(ActionEvent e) {
                 chartModel = new AxisGridDecorator(chartModel);
                 updateChart(chartModel);
+                setCheckBoxesFalse(grid);
             }
         });
 
@@ -200,6 +209,7 @@ public class GraphPresenter {
             public void actionPerformed(ActionEvent e) {
                 chartModel = new AxisPercentageGraphDecorator(chartModel);
                 updateChart(chartModel);
+                setCheckBoxesFalse(dataInformationPercentage);
             }
         });
 
@@ -208,9 +218,14 @@ public class GraphPresenter {
             public void actionPerformed(ActionEvent e) {
                 chartModel = new AxisValuePercentageGraphDecorator(chartModel);
                 updateChart(chartModel);
+                setCheckBoxesFalse(dataInformationValuePercentage);
             }
         });
 
+    }
+
+    private void setCheckBoxesFalse(JCheckBox checkBox) {
+        checkBox.setEnabled(false);
     }
 
     public JPanel buildChart(IGraph chartModel){
@@ -220,60 +235,8 @@ public class GraphPresenter {
         panel.setDomainZoomable(true);
         panel.setEnabled(true);
         return panel;
-/*
-        DefaultCategoryDataset bars = new DefaultCategoryDataset();
-
-        Collection<SubjectModel> subjetcs= CSVReader.readCsv();
-        Map<String,Double> data = dps.processData(subjetcs);
-
-        bars.addValue(data.get(dps.getMASCULINO()+ dps.getSOLTEIRO()), dps.getMASCULINO()+ dps.getSOLTEIRO(),"");
-        bars.addValue(data.get(dps.getMASCULINO()+ dps.getCASADO()), dps.getMASCULINO()+ dps.getCASADO(),"");
-        bars.addValue(data.get(dps.getFEMININO()+ dps.getSOLTEIRO()), dps.getFEMININO()+ dps.getSOLTEIRO(),"");
-        bars.addValue(data.get(dps.getFEMININO()+ dps.getCASADO()), dps.getFEMININO()+ dps.getCASADO(),"");
-
-
-        JFreeChart graph = ChartFactory.createBarChart(null,null,null,bars,PlotOrientation.HORIZONTAL,false,false,false);
-
-        CategoryPlot plot = graph.getCategoryPlot();
-        LegendItem legendItem = new LegendItem("Teste","Teste", null,null,null,Color.BLACK);
-        LegendItemCollection colletion = new LegendItemCollection();
-        colletion.add(legendItem);
-        plot.getLegendItems().add(legendItem);
-        LegendTitle legendTitle = new LegendTitle(plot);
-        legendTitle.setPosition(RectangleEdge.BOTTOM);
-        graph.addLegend(legendTitle);
-
-
-        ChartPanel panel = new ChartPanel(graph);
-        panel.setPreferredSize(new Dimension(600,400));
-        panel.setDomainZoomable(true);
-        panel.setEnabled(true);
-
-        return panel;*/
     }
 
-    public JPanel buildChartWithTitle(String title){
-        DefaultCategoryDataset bars = new DefaultCategoryDataset();
-
-        Collection<SubjectModel> subjetcs= CSVReader.readCsv();
-        Map<String,Double> data = dps.processData(subjetcs);
-
-        bars.addValue(data.get(dps.getMASCULINO()+ dps.getSOLTEIRO()), dps.getMASCULINO()+ dps.getSOLTEIRO(),"");
-        bars.addValue(data.get(dps.getMASCULINO()+ dps.getCASADO()), dps.getMASCULINO()+ dps.getCASADO(),"");
-        bars.addValue(data.get(dps.getFEMININO()+ dps.getSOLTEIRO()), dps.getFEMININO()+ dps.getSOLTEIRO(),"");
-        bars.addValue(data.get(dps.getFEMININO()+ dps.getCASADO()), dps.getFEMININO()+ dps.getCASADO(),"");
-
-
-        JFreeChart graph = ChartFactory.createBarChart(title,null,null,bars,PlotOrientation.HORIZONTAL,false,false,true);
-
-
-        ChartPanel panel = new ChartPanel(graph);
-        panel.setPreferredSize(new Dimension(600,400));
-        panel.setDomainZoomable(true);
-        panel.setEnabled(true);
-
-        return panel;
-    }
 
     public void initComboBox(){
         this.chartComboBox.removeAllItems();
@@ -291,6 +254,18 @@ public class GraphPresenter {
         barColors.setSelected(false);
         barColorsByGroups.setSelected(false);
         grid.setSelected(false);
+
+        titleCheckBox.setEnabled(true);
+        legend.setEnabled(true);
+        axisTitles.setEnabled(true);
+        dataInformationPercentage.setEnabled(true);
+        dataInformationValue.setEnabled(true);
+        dataInformationValuePercentage.setEnabled(true);
+        barColors.setEnabled(true);
+        barColorsByGroups.setEnabled(true);
+        grid.setEnabled(true);
+
+
     }
 
     private void updateChart(IGraph chartModel){
