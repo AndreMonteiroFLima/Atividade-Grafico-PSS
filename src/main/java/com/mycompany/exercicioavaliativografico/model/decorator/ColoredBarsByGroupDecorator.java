@@ -28,7 +28,13 @@ public class ColoredBarsByGroupDecorator extends GraphDecorator {
 
     @Override
     public IGraph reverseDecorator() {
-        return null;
+        BarRenderer r =(BarRenderer) graph.showChart().getCategoryPlot().getRenderer();
+        BarPainter br=r.getBarPainter();
+        Dataset bars =  graph.showChart().getCategoryPlot().getDataset();
+
+        r.setSeriesPaint(0, Color.CYAN);
+        r.setSeriesPaint(1, Color.CYAN);
+        return graph;
     }
 
 

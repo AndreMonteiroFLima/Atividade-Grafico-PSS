@@ -20,20 +20,18 @@ public class ColoredBarsDecorator extends GraphDecorator {
 
     @Override
     public JFreeChart showChart() {
-        /*BarRenderer r =(BarRenderer) graph.showChart().getCategoryPlot().getRenderer();
+        BarRenderer r =(BarRenderer) graph.showChart().getCategoryPlot().getRenderer();
         BarPainter br=r.getBarPainter();
-        Dataset bars =  graph.showChart().getCategoryPlot().getDataset();*/
+        Dataset bars =  graph.showChart().getCategoryPlot().getDataset();
 
-        /*r.setSeriesPaint(0,Color.CYAN);
-        r.setSeriesPaint(1,Color.PINK);
+
         r.setSeriesPaint(2,Color.white);
-        r.setSeriesPaint(3,Color.GRAY);*/
         return super.showChart();
     }
 
     @Override
     public IGraph reverseDecorator() {
-        return null;
+        return graph;
     }
 
 

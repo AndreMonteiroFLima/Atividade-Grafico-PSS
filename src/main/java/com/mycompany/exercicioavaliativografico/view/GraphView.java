@@ -46,7 +46,6 @@ public class GraphView extends javax.swing.JFrame {
         rotuloPorcentagemCheckBox = new javax.swing.JCheckBox();
         rotuloValorCheckBox = new javax.swing.JCheckBox();
         rotuloValorPorcentagemCheckBox = new javax.swing.JCheckBox();
-        corBarrasCheckBox = new javax.swing.JCheckBox();
         corBarrasGrupoCheckBox = new javax.swing.JCheckBox();
         gradeCheckBox = new javax.swing.JCheckBox();
 
@@ -91,8 +90,6 @@ public class GraphView extends javax.swing.JFrame {
             }
         });
 
-        corBarrasCheckBox.setText("Cor das Barras");
-
         corBarrasGrupoCheckBox.setText("Cor das Barras (por grupo)");
 
         gradeCheckBox.setText("Grade");
@@ -110,7 +107,6 @@ public class GraphView extends javax.swing.JFrame {
                     .addComponent(tituloEixosCheckBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(rotuloPorcentagemCheckBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(rotuloValorPorcentagemCheckBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(corBarrasCheckBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(corBarrasGrupoCheckBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(gradeCheckBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(rotuloValorCheckBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -134,12 +130,10 @@ public class GraphView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rotuloValorPorcentagemCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(corBarrasCheckBox)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(corBarrasGrupoCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gradeCheckBox)
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout primaryPanelLayout = new javax.swing.GroupLayout(primaryPanel);
@@ -244,9 +238,11 @@ public class GraphView extends javax.swing.JFrame {
         });
     }
 
+/*
     public JCheckBox getCorBarrasCheckBox() {
         return corBarrasCheckBox;
     }
+*/
 
     public JCheckBox getCorBarrasGrupoCheckBox() {
         return corBarrasGrupoCheckBox;
@@ -328,7 +324,6 @@ public class GraphView extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox corBarrasCheckBox;
     private javax.swing.JCheckBox corBarrasGrupoCheckBox;
     private javax.swing.JLabel elementosLabel;
     private javax.swing.JButton exitBtn;

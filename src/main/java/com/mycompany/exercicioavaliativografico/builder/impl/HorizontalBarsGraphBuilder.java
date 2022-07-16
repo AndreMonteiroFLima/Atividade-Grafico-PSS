@@ -27,10 +27,12 @@ public class HorizontalBarsGraphBuilder extends GraphBuilder {
 
         chart.setChart(ChartFactory.createBarChart(null,null,null,bars, PlotOrientation.HORIZONTAL,false,false,false));
         CategoryPlot plot = chart.showChart().getCategoryPlot();
+
         BarRenderer r =(BarRenderer) chart.showChart().getCategoryPlot().getRenderer();
         r.setSeriesPaint(0, Color.CYAN);
         r.setSeriesPaint(1, Color.CYAN);
         r.setBarPainter(new StandardBarPainter());
+
         plot.getDomainAxis().setVisible(true);
         plot.setDomainGridlinesVisible(false);
         plot.setRangeAxisLocation(AxisLocation.BOTTOM_OR_RIGHT);

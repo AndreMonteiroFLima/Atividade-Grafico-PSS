@@ -16,12 +16,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.LinkedList;
 
 public class GraphPresenter {
 
     GraphView graphView = new GraphView();
     DataProcessingService dps = new DataProcessingService();
     ChartDirector chartDirector = new ChartDirector();
+
+
 
     JButton closeBtn;
     JButton restoreBtn;
@@ -34,11 +37,13 @@ public class GraphPresenter {
     JCheckBox dataInformationPercentage;
     JCheckBox dataInformationValue;
     JCheckBox dataInformationValuePercentage;
-    JCheckBox barColors;
+/*    JCheckBox barColors;*/
     JCheckBox barColorsByGroups;
     JCheckBox grid;
     ChartPanel panel;
     IGraph chartModel;
+
+    LinkedList<JCheckBox> checkBoxes = new LinkedList<JCheckBox>();
 
     IGraph lastChartModel;
     public GraphPresenter(){
@@ -55,10 +60,11 @@ public class GraphPresenter {
         dataInformationPercentage = graphView.getRotuloPorcentagemCheckBox();
         dataInformationValue = graphView.getRotuloValorCheckBox();
         dataInformationValuePercentage = graphView.getRotuloValorPorcentagemCheckBox();
-        barColors = graphView.getCorBarrasCheckBox();
+/*        barColors = graphView.getCorBarrasCheckBox();*/
         barColorsByGroups = graphView.getCorBarrasGrupoCheckBox();
         grid = graphView.getGradeCheckBox();
         reverseBtn = graphView.getUnDoBtn();
+
 
         initComboBox();
 
@@ -75,6 +81,8 @@ public class GraphPresenter {
             public void actionPerformed(ActionEvent e) {
                 graphView.getGraphPanel().remove(0);
                 graphView.getGraphPanel().add(buildChart(defaultChartModel));
+                chartModel=defaultChartModel;
+                resetCheckBoxes();
                 graphView.repaint();
                 SwingUtilities.updateComponentTreeUI(graphView);
                 //titleCheckBox.setSelected(false);
@@ -89,6 +97,15 @@ public class GraphPresenter {
                 }else {
                     chartModel = chartModel.reverseDecorator();
                     updateChart(chartModel);
+                    JCheckBox to=checkBoxes.pop();
+                    if(to.equals(dataInformationValue) || to.equals(dataInformationPercentage) || to.equals(dataInformationValuePercentage)){
+                        dataInformationValue.setEnabled(true);
+                        dataInformationPercentage.setEnabled(true);
+                        dataInformationValuePercentage.setEnabled(true);
+                    }else
+                        to.setEnabled(true);
+
+                    to.setSelected(false);
                 }
             }
         });
@@ -113,7 +130,6 @@ public class GraphPresenter {
             }
         });
 
-
         titleCheckBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -127,10 +143,9 @@ public class GraphPresenter {
                     }
                 }
                 titleCheckBox.setSelected(checked);
-                lastChartModel=chartModel;
                 chartModel = new TitleGraphDecorator(chartModel,title);
+                checkBoxes.add(titleCheckBox);
                 updateChart(chartModel);
-
             }
         });
 
@@ -138,94 +153,97 @@ public class GraphPresenter {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(legend.isSelected()) {
-                    lastChartModel=chartModel;
-                    chartModel = new LegendGraphDecorator(chartModel);
-                    updateChart(chartModel);
-                    setCheckBoxesFalse(legend);
+                    selectionRotine(new LegendGraphDecorator(chartModel),legend);
                 }
             }
         });
 
 
 
-        dataInformationValue.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(dataInformationValue.isSelected()) {
-                    lastChartModel=chartModel;
-                    chartModel = new AxisValueGraphDecorator(chartModel);
-                    updateChart(chartModel);
-                    setCheckBoxesFalse(dataInformationValue);
-                }else{
-                    graphView.getGraphPanel().remove(0);
-                    graphView.getGraphPanel().add(buildChart(defaultChartModel));
-                    graphView.repaint();
-                    SwingUtilities.updateComponentTreeUI(graphView);
-                }
-            }
-        });
 
         axisTitles.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                chartModel = new AxisTitleGraphDecorator(chartModel);
-                updateChart(chartModel);
-                setCheckBoxesFalse(axisTitles);
+                if(axisTitles.isSelected()) {
+                    selectionRotine(new AxisTitleGraphDecorator(chartModel),axisTitles);
+                }
 
             }
         });
 
+/*
         barColors.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                chartModel = new ColoredBarsDecorator(chartModel);
-                updateChart(chartModel);
-                setCheckBoxesFalse(barColors);
+                if(barColors.isSelected()) {
+                    chartModel = new ColoredBarsDecorator(chartModel);
+                    updateChart(chartModel);
+                    checkBoxes.add(barColors);
+                    setCheckBoxesFalse(barColors);
+                }
             }
         });
+*/
 
         barColorsByGroups.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                chartModel = new ColoredBarsByGroupDecorator(chartModel);
-                updateChart(chartModel);
-                titleCheckBox.setEnabled(false);
-                setCheckBoxesFalse(barColorsByGroups);
+                if(barColorsByGroups.isSelected()) {
+                    selectionRotine(new ColoredBarsByGroupDecorator(chartModel),barColorsByGroups);
+                }
             }
         });
 
         grid.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                chartModel = new AxisGridDecorator(chartModel);
-                updateChart(chartModel);
-                setCheckBoxesFalse(grid);
+                if(grid.isSelected()) {
+                    selectionRotine(new AxisGridDecorator(chartModel),grid);
+                }
             }
         });
 
         dataInformationPercentage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                chartModel = new AxisPercentageGraphDecorator(chartModel);
-                updateChart(chartModel);
-                setCheckBoxesFalse(dataInformationPercentage);
+                if(dataInformationPercentage.isSelected()) {
+                    selectionRotine(new AxisPercentageGraphDecorator(chartModel),dataInformationPercentage);
+                    dataInformationEnableFalse();
+                }
             }
         });
 
         dataInformationValuePercentage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                chartModel = new AxisValuePercentageGraphDecorator(chartModel);
-                updateChart(chartModel);
-                setCheckBoxesFalse(dataInformationValuePercentage);
+                if(dataInformationValuePercentage.isSelected()) {
+                    selectionRotine(new AxisValuePercentageGraphDecorator(chartModel),dataInformationValuePercentage);
+                    dataInformationEnableFalse();
+                }
+            }
+        });
+
+        dataInformationValue.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(dataInformationValue.isSelected()) {
+                    selectionRotine(new AxisValueGraphDecorator(chartModel),dataInformationValue);
+                    dataInformationEnableFalse();
+                }
             }
         });
 
     }
 
+    private void selectionRotine(GraphDecorator decorator,JCheckBox checkBox) {
+        chartModel = decorator;
+        updateChart(chartModel);
+        checkBoxes.add(checkBox);
+        setCheckBoxesFalse(checkBox);
+    }
+
     private void setCheckBoxesFalse(JCheckBox checkBox) {
-        checkBox.setEnabled(false);
+            checkBox.setEnabled(false);
     }
 
     public JPanel buildChart(IGraph chartModel){
@@ -245,13 +263,14 @@ public class GraphPresenter {
     }
 
     private void resetCheckBoxes(){
+
         titleCheckBox.setSelected(false);
         legend.setSelected(false);
         axisTitles.setSelected(false);
         dataInformationPercentage.setSelected(false);
         dataInformationValue.setSelected(false);
         dataInformationValuePercentage.setSelected(false);
-        barColors.setSelected(false);
+/*        barColors.setSelected(false);*/
         barColorsByGroups.setSelected(false);
         grid.setSelected(false);
 
@@ -261,11 +280,16 @@ public class GraphPresenter {
         dataInformationPercentage.setEnabled(true);
         dataInformationValue.setEnabled(true);
         dataInformationValuePercentage.setEnabled(true);
-        barColors.setEnabled(true);
+/*        barColors.setEnabled(true);*/
         barColorsByGroups.setEnabled(true);
         grid.setEnabled(true);
 
+    }
 
+    private void dataInformationEnableFalse(){
+        setCheckBoxesFalse(dataInformationPercentage);
+        setCheckBoxesFalse(dataInformationValue);
+        setCheckBoxesFalse(dataInformationValuePercentage);
     }
 
     private void updateChart(IGraph chartModel){

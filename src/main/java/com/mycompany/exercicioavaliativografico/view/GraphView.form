@@ -147,7 +147,6 @@
                           <Component id="tituloEixosCheckBox" alignment="0" max="32767" attributes="0"/>
                           <Component id="rotuloPorcentagemCheckBox" alignment="0" max="32767" attributes="0"/>
                           <Component id="rotuloValorPorcentagemCheckBox" max="32767" attributes="0"/>
-                          <Component id="corBarrasCheckBox" alignment="0" max="32767" attributes="0"/>
                           <Component id="corBarrasGrupoCheckBox" alignment="0" max="32767" attributes="0"/>
                           <Component id="gradeCheckBox" alignment="0" max="32767" attributes="0"/>
                           <Component id="rotuloValorCheckBox" alignment="0" max="32767" attributes="0"/>
@@ -174,12 +173,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="rotuloValorPorcentagemCheckBox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="corBarrasCheckBox" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="corBarrasGrupoCheckBox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="gradeCheckBox" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="137" max="32767" attributes="0"/>
+                      <EmptySpace pref="163" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -225,11 +222,6 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rotuloValorPorcentagemCheckBoxActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="corBarrasCheckBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Cor das Barras"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="corBarrasGrupoCheckBox">
               <Properties>

@@ -29,8 +29,8 @@ public class AxisTitleGraphDecorator extends GraphDecorator {
 
     @Override
     public IGraph reverseDecorator() {
-        graph.showChart().getCategoryPlot().getDomainAxis().setVisible(false);
-        graph.showChart().getCategoryPlot().getRangeAxis().setVisible(false);
+        graph.showChart().getCategoryPlot().getDomainAxis().setLabel(null);
+        graph.showChart().getCategoryPlot().getRangeAxis().setLabel(null);
         return graph;
     }
 
